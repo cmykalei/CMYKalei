@@ -6,11 +6,12 @@ function App() {
   return (
     <div className="app-grid">
       <Header
-        greeting="Kia ora"
+        greeting="Hi"
         name="Kalei"
         qualification="Bachelor of Computer Science, University of Waikato, NZ"
-        disclaimer="I haven't graduated yet, hence the memoji placeholder 🤭"
+        disclaimer="Still undergrad, so Memoji placeholder 🤭"
         flex="col"
+        size="medium"
       />
 
       <footer className="footer" role="contentinfo" aria-label="Social links">

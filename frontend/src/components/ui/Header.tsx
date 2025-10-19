@@ -29,8 +29,8 @@ export function Header({
 }: HeaderProps): JSX.Element {
     const resolvedSize =
         size === "small" ? 100 :
-        size === "medium" ? 250 :
-        size === "large" ? 300 :
+        size === "medium" ? 180 :
+        size === "large" ? 220 :
         typeof size === "string" ? parseInt(size) || 200 :
         200;
 
@@ -47,6 +47,9 @@ export function Header({
                     flexDirection: flex === 'col' ? 'column' : 'row',
                 }}
             >
+                <h1>
+                    {greeting ?? 'Hello'}, I'm {name}.
+                </h1>
                 <VideoAvatar src="/memoji.mp4" size={resolvedSize} />
                 <div style={{
                     display: 'flex',
@@ -54,9 +57,6 @@ export function Header({
                     gap: 12,
                     textAlign: flex === 'col' ? 'center' : 'left'
                 }}>
-                    <h1>
-                        {greeting ?? 'Hello'}, my name is {name}!
-                    </h1>
                     {icon}
                     {qualification && <strong>{qualification}</strong>}
                     {disclaimer && <small> Disclaimer: {disclaimer}</small>}

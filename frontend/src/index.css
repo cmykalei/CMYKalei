@@ -47,8 +47,10 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: #ffffff;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 53%, rgba(17, 17, 112, 0.15) 89%, rgba(50, 29, 140, 0.14) 98%);
+    /*
+    background: radial-gradient(circle, rgba(250, 250, 255, 0.2) 30%, rgba(30, 50, 50, 0.1) 75%, rgba(180, 180, 190, 0.9) 100%);
+    */
+    background: var(--bg);
     z-index: 0;
 }
 
