@@ -1,62 +1,43 @@
 // Global styles consolidated in index.css; App.css removed
-import * as Tooltip from '@radix-ui/react-tooltip'
 import { Header } from '@/components/ui/Header';
 
 
 function App() {
   return (
-    <div style={{ display: 'grid', justifyItems: 'center', gap: 12 }}>
+    <div className="app-grid">
       <Header
-            greeting="Kia ora"
-            name="Kalei"
-            qualification="Undergrad, Bachelor of Computer Science, UoW"
-            flex="row"
+        greeting="Kia ora"
+        name="Kalei"
+        qualification="Bachelor of Computer Science, University of Waikato, NZ"
+        disclaimer="I haven't graduated yet, hence the memoji placeholder 🤭"
+        flex="col"
       />
 
-      <div style={{ display: 'flex', gap: 16, justifyContent: 'center', marginTop: 12 }}>
-        <Tooltip.Provider>
-          <Tooltip.Root>
-            <Tooltip.Trigger asChild>
-              <a
-                href="https://github.com/cmykalei"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub: @cmykalei"
-                style={{ color: 'inherit', textDecoration: 'underline' }}
-              >
-                GitHub: @cmykalei
-              </a>
-            </Tooltip.Trigger>
-            <Tooltip.Portal>
-              <Tooltip.Content
-                  sideOffset={6} style={{ background: 'black', color: 'white', padding: '6px 8px', borderRadius: 6, fontSize: 12 }}>
-                Open GitHub profile
-                <Tooltip.Arrow width={10} height={5} style={{ fill: 'black' }} />
-              </Tooltip.Content>
-            </Tooltip.Portal>
-          </Tooltip.Root>
+      <footer className="footer" role="contentinfo" aria-label="Social links">
+        <div className="link-row">
+        <a
+          href="https://github.com/cmykalei"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub: @cmykalei"
+          title="GitHub"
+        >
+          <img className="inline-icon" src="/github-mark.svg" alt="" aria-hidden="true" width={18} height={18} style={{ marginRight: 6 }} />
+          GitHub
+        </a>
 
-          <Tooltip.Root>
-            <Tooltip.Trigger asChild>
-              <a
-                href="https://instagram.com/cmykalei"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram: @cmykalei"
-                style={{ color: 'inherit', textDecoration: 'underline' }}
-              >
-                Instagram: @cmykalei
-              </a>
-            </Tooltip.Trigger>
-            <Tooltip.Portal>
-              <Tooltip.Content sideOffset={6} style={{ background: 'black', color: 'white', padding: '6px 8px', borderRadius: 6, fontSize: 12 }}>
-                Open Instagram profile
-                <Tooltip.Arrow width={10} height={5} style={{ fill: 'black' }} />
-              </Tooltip.Content>
-            </Tooltip.Portal>
-          </Tooltip.Root>
-        </Tooltip.Provider>
-      </div>
+        <a
+          href="https://instagram.com/cmykalei"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram: @cmykalei"
+          title="Instagram: @cmykalei"
+        >
+          <img className="inline-icon" src="/Instagram_Glyph_Black.svg" alt="" aria-hidden="true" width={18} height={18} style={{ marginRight: 6 }} />
+          Instagram
+        </a>
+        </div>
+      </footer>
     </div>
   )
 }

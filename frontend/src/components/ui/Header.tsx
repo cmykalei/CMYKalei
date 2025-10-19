@@ -1,32 +1,66 @@
 import React from 'react';
 import { VideoAvatar } from './VideoAvatar';
-import clsx from 'clsx';
 
 export type HeaderProps = {
     greeting?: string | "Hello";
     name: string;
-    qualification: string;
-    flex: string;
+    qualification?: string;
+    disclaimer?: string;
+    flex?: 'row' | 'col';
     icon?: React.ReactNode;
+    className?: string;
+    size?: "small" | "medium" | "large" | string;
 };
 
 /**
- * Minimal, responsive Header component with name, qualification and optional icon.
- * Styling is inline to keep the project minimal and avoid extra CSS files.
+ * Header component that displays a greeting, name, qualification, and a video avatar.
+ *
+ * @param       {HeaderProps} props The properties for the Header component.
+ * @returns     {JSX.Element}       The rendered Header component.
  */
-export function Header({ greeting, name, flex }: HeaderProps) {
+export function Header({
+                           greeting,
+                           name,
+                           qualification,
+                           disclaimer,
+                           flex = 'row',
+                           icon,
+                           size
+}: HeaderProps): JSX.Element {
+    const resolvedSize =
+        size === "small" ? 100 :
+        size === "medium" ? 250 :
+        size === "large" ? 300 :
+        typeof size === "string" ? parseInt(size) || 200 :
+        200;
+
     return (
         <>
             <div
-                className={clsx(
-                    'flex justify-center items-center gap-4',
-                    flex === 'col' ? 'flex-col' : 'flex-row'
-                )}
+                style={{
+                    display: 'flex',
+                    padding: 24,
+                    marginTop: 24,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 20,
+                    flexDirection: flex === 'col' ? 'column' : 'row',
+                }}
             >
-                <h1 className="shrink-0">{greeting ?? 'Hello'}, my name is {name}!</h1>
-                <VideoAvatar src="/memoji.mp4" size={200} />
-                <h3 className="shrink-0">This is a placeholder portrait!</h3>
-                <p className="shrink-0">Disclaimer: I haven't graduated yet, but we can let a girl dream.</p>
+                <VideoAvatar src="/memoji.mp4" size={resolvedSize} />
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 12,
+                    textAlign: flex === 'col' ? 'center' : 'left'
+                }}>
+                    <h1>
+                        {greeting ?? 'Hello'}, my name is {name}!
+                    </h1>
+                    {icon}
+                    {qualification && <strong>{qualification}</strong>}
+                    {disclaimer && <small> Disclaimer: {disclaimer}</small>}
+                </div>
             </div>
         </>
     );

@@ -1,7 +1,12 @@
 import * as Avatar from '@radix-ui/react-avatar';
 
-export function VideoAvatar({src, size = 100 }:
-    { src: string; size?: number; }) {
+export function VideoAvatar({
+                                src,
+                                size
+}: {
+        src: string;
+        size?: number;
+    }) {
     return (
         <Avatar.Root
             style={{
