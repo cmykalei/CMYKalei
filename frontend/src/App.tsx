@@ -9,7 +9,7 @@ function App() {
       <h1>Hello,</h1>
       <p>It's LeiLei here ;)</p>
 
-        <VideoAvatar src="/public/memoji.mp4" fallbackText="Kalei Avatar" />
+        <VideoAvatar src="/memoji.mp4" fallbackText="Kalei Avatar" />
 
       <h3>This is a placeholder portrait!</h3>
       <p>Disclaimer: I haven't graduated yet, but we can let a girl dream.</p>
