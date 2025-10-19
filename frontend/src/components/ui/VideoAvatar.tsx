@@ -1,10 +1,19 @@
 import * as Avatar from '@radix-ui/react-avatar';
 
-export function VideoAvatar({ src, fallbackText }: { src: string; fallbackText: string }) {
+export function VideoAvatar({src, size = 100 }:
+    { src: string; size?: number; }) {
     return (
-        <Avatar.Root className="AvatarRoot">
+        <Avatar.Root
+            style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                borderRadius: '50%',
+                overflow: 'hidden',
+                display: 'inline-block',
+                flexShrink: 0,
+            }}
+        >
             <video
-                className="AvatarImage"
                 src={src}
                 autoPlay
                 muted
@@ -14,17 +23,14 @@ export function VideoAvatar({ src, fallbackText }: { src: string; fallbackText: 
                 controls={false}
                 onContextMenu={(e) => e.preventDefault()}
                 style={{
-                    borderRadius: '50%',
+                    width: '100%',
+                    height: '100%',
                     objectFit: 'cover',
-                    width: 120,
-                    height: 120,
                     imageRendering: 'auto',
-                    transform: 'translateZ(0)'
+                    transform: 'translateZ(0)',
+                    display: 'block',
                 }}
             />
-            <Avatar.Fallback className="AvatarFallback" delayMs={12000}>
-                {fallbackText}
-            </Avatar.Fallback>
         </Avatar.Root>
     );
 }

@@ -1,18 +1,17 @@
-import './App.css'
+// Global styles consolidated in index.css; App.css removed
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { VideoAvatar } from '@/components/ui/VideoAvatar';
+import { Header } from '@/components/ui/Header';
 
 
 function App() {
   return (
     <div style={{ display: 'grid', justifyItems: 'center', gap: 12 }}>
-      <h1>Hello,</h1>
-      <p>It's LeiLei here ;)</p>
-
-        <VideoAvatar src="/memoji.mp4" fallbackText="Kalei Avatar" />
-
-      <h3>This is a placeholder portrait!</h3>
-      <p>Disclaimer: I haven't graduated yet, but we can let a girl dream.</p>
+      <Header
+            greeting="Kia ora"
+            name="Kalei"
+            qualification="Undergrad, Bachelor of Computer Science, UoW"
+            flex="row"
+      />
 
       <div style={{ display: 'flex', gap: 16, justifyContent: 'center', marginTop: 12 }}>
         <Tooltip.Provider>
