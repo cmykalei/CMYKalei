@@ -12,7 +12,7 @@ export const buttonVariants = cva(
         gap-2
         whitespace-nowrap
         rounded-md
-        text-sm
+        text-xs
         font-medium
         transition-all
         disabled:pointer-events-none
@@ -34,8 +34,9 @@ export const buttonVariants = cva(
         default:
           `
             bg-primary
-            text-primary-foreground
+            dark:text-primary-foreground
             hover:bg-primary/90
+            dark:bg-accent
             `,
         destructive:
           `
