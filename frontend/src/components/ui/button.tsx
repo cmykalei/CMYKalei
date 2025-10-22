@@ -48,9 +48,9 @@ export const buttonVariants = cva(
             `,
         outline:
           `
-            border
-            bg-background
-            shadow-xs
+            bg-transparent
+            shadow-sm
+            text-xs
             hover:bg-accent
             hover:text-accent-foreground
             dark:bg-input/30
@@ -58,17 +58,20 @@ export const buttonVariants = cva(
             dark:hover:bg-input/50
             `,
         secondary:
-          `bg-secondary
+          `
+            bg-secondary
             text-secondary-foreground
             hover:bg-secondary/80
             `,
         ghost:
-          `hover:bg-accent
+          `
+            hover:bg-accent
             hover:text-accent-foreground
             dark:hover:bg-accent/50
             `,
         link:
-          `text-primary
+          `
+            text-primary
             underline-offset-4
             hover:underline
             `,
@@ -91,24 +94,60 @@ export const buttonVariants = cva(
 
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  ButtonVariantProps & {
+type ButtonBaseProps = ButtonVariantProps & {
+    className?: string
     asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
+}
 
+type ButtonAsButton = ButtonBaseProps & React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined
+}
+
+type ButtonAsAnchor = ButtonBaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string
+}
+
+type ButtonProps = ButtonAsButton | ButtonAsAnchor
+
+function Button({
+    className,
+    variant,
+    size,
+    asChild = false,
+    href,
+    ...props
+}: ButtonProps) {
+    // If asChild is true, render a Slot
+    if (asChild) {
+        return (
+            <Slot
+                data-slot="button"
+                className={cn(buttonVariants({ variant, size }), className)}
+                {...(props as Record<string, unknown>)} />
+        )
+    }
+
+  // If href is provided, render an anchor
+  if (href) {
+    const anchorProps = props as React.AnchorHTMLAttributes<HTMLAnchorElement>
+    const safeRel = anchorProps.target === "_blank" ? ["noopener", "noreferrer", anchorProps.rel].filter(Boolean).join(" ") : anchorProps.rel
+    return (
+        <a
+            href={href}
+            {...anchorProps}
+            target={anchorProps.target}
+            rel={safeRel}
+            data-slot="button"
+            className={cn(buttonVariants({ variant, size }), className)} />
+    )
+  }
+
+  // Default: render a button element
   return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
+    <button
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size }), className)}
+        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)} />
   )
 }
 
