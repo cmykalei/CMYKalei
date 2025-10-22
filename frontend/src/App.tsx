@@ -1,5 +1,5 @@
-// Global styles consolidated in index.css; App.css removed
-import { Header } from '@/components/ui/Header';
+import { Header } from "@/components/ui/Header";
+import { Button } from "@/components/ui/button";
 
 
 function App() {
@@ -38,6 +38,8 @@ function App() {
           Instagram
         </a>
         </div>
+
+          <Button variant="outline" size="sm" className="mt-4">Button</Button>
       </footer>
     </div>
   )

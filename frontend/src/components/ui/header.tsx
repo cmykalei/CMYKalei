@@ -1,5 +1,5 @@
-import React from 'react';
-import { VideoAvatar } from './VideoAvatar';
+import * as React from "react"
+import { Video_avatar } from './video_avatar.tsx';
 
 export type HeaderProps = {
     greeting?: string | "Hello";
@@ -50,7 +50,7 @@ export function Header({
                 <h1>
                     {greeting ?? 'Hello'}, I'm {name}.
                 </h1>
-                <VideoAvatar src="/memoji.mp4" size={resolvedSize} />
+                <Video_avatar src="/memoji.mp4" size={resolvedSize} />
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',

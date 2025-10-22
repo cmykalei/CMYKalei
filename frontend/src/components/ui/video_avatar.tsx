@@ -1,6 +1,6 @@
 import * as Avatar from '@radix-ui/react-avatar';
 
-export function VideoAvatar({
+export function Video_avatar({
                                 src,
                                 size
 }: {
