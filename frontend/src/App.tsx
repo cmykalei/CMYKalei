@@ -1,6 +1,6 @@
-import { Header } from "@/components/ui/Header";
+import { Header } from "@/components/ui/header";
 import { Button } from "@/components/ui/button";
-
+import { InstagramLogoIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 function App() {
   return (
@@ -14,33 +14,17 @@ function App() {
         size="medium"
       />
 
-      <footer className="footer" role="contentinfo" aria-label="Social links">
-        <div className="link-row">
-        <a
-          href="https://github.com/cmykalei"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub: @cmykalei"
-          title="GitHub"
-        >
-          <img className="inline-icon" src="/github-mark.svg" alt="" aria-hidden="true" width={18} height={18} style={{ marginRight: 6 }} />
-          GitHub
-        </a>
+        <Button variant="outline" size="sm" className="mt-4">
+            <InstagramLogoIcon className="mr-2 size-4" />
+        </Button>
 
-        <a
-          href="https://instagram.com/cmykalei"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram: @cmykalei"
-          title="Instagram: @cmykalei"
-        >
-          <img className="inline-icon" src="/Instagram_Glyph_Black.svg" alt="" aria-hidden="true" width={18} height={18} style={{ marginRight: 6 }} />
-          Instagram
-        </a>
-        </div>
+        <Button variant="outline" size="sm" className="mt-4">
+            <GitHubLogoIcon className="mr-2 size-4" />
+        </Button>
 
-          <Button variant="outline" size="sm" className="mt-4">Button</Button>
-      </footer>
+        <Button variant="outline" size="sm" className="mt-4">
+            <LinkedInLogoIcon className="mr-2 size-4" />
+        </Button>
     </div>
   )
 }
